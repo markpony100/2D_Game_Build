@@ -1,0 +1,81 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://player/Idle/frame_0_delay-0.08s.png" type="Texture" id=2]
+[ext_resource path="res://player/Idle/frame_1_delay-0.08s.png" type="Texture" id=3]
+[ext_resource path="res://player/Idle/frame_2_delay-0.16s.png" type="Texture" id=4]
+[ext_resource path="res://player/Idle/frame_3_delay-1.6s.png" type="Texture" id=5]
+[ext_resource path="res://player/Idle/frame_4_delay-0.08s.png" type="Texture" id=6]
+[ext_resource path="res://player/Idle/frame_6_delay-0.16s.png" type="Texture" id=7]
+[ext_resource path="res://player/Idle/frame_7_delay-1.6s.png" type="Texture" id=8]
+[ext_resource path="res://player/Idle/frame_5_delay-0.08s.png" type="Texture" id=9]
+[ext_resource path="res://player/jump/0.png" type="Texture" id=10]
+[ext_resource path="res://player/jump/1.png" type="Texture" id=11]
+[ext_resource path="res://player/jump/2.png" type="Texture" id=12]
+[ext_resource path="res://player/jump/3.png" type="Texture" id=13]
+[ext_resource path="res://player/jump/4.png" type="Texture" id=14]
+[ext_resource path="res://player/jump/5.png" type="Texture" id=15]
+[ext_resource path="res://player/run/frame_0_delay-0.08s.png" type="Texture" id=16]
+[ext_resource path="res://player/run/frame_1_delay-0.08s.png" type="Texture" id=17]
+[ext_resource path="res://player/run/frame_2_delay-0.08s.png" type="Texture" id=18]
+[ext_resource path="res://player/run/frame_3_delay-0.08s.png" type="Texture" id=19]
+[ext_resource path="res://player/run/frame_4_delay-0.08s.png" type="Texture" id=20]
+[ext_resource path="res://player/run/frame_5_delay-0.08s.png" type="Texture" id=21]
+[ext_resource path="res://JungleTile.tres" type="TileSet" id=22]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "fall",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 5.31985
+height = 19.0323
+
+[node name="World" type="Node"]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 345.564, 43.0629 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="Player"]
+position = Vector2( 0.38689, 0.238358 )
+scale = Vector2( 0.48791, 0.516732 )
+frames = SubResource( 1 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0.5, 1.8 )
+shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 22 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65539, 20, 0, 65540, 20, 0, 131075, 7, 0, 131076, 8, 0, 131079, 24, 0, 131080, 24, 0, 131081, 24, 0, 196609, 24, 0, 196611, 9, 0, 196612, 10, 0, 196615, 1, 0, 196616, 12, 0, 196617, 14, 0, 262145, 1, 0, 262151, 1, 0, 262152, 14, 0, 262159, 23, 0, 262160, 21, 0, 262161, 22, 0, 262162, 25, 0, 327681, 1, 0, 327687, 14, 0, 393219, 23, 0, 393220, 24, 0, 393221, 25, 0, 393225, 23, 0, 393226, 24, 0, 393227, 24, 0, 393228, 25, 0, 458755, 3, 0, 458756, 4, 0, 458757, 5, 0, 458761, 0, 0, 458762, 1, 0, 458763, 5, 0, 458764, 6, 0, 458771, 16, 0, 458772, 17, 0, 524303, 21, 0, 524304, 21, 0, 524305, 21, 0, 524306, 21, 0, 524307, 5, 0, 524308, 6, 0, 589839, 1, 0, 589840, 1, 0, 589841, 5, 0, 589842, 6, 0, 655360, 21, 0, 655361, 21, 0, 655362, 21, 0, 655366, 23, 0, 655367, 24, 0, 655368, 25, 0, 655371, 24, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
